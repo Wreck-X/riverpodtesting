@@ -6,16 +6,6 @@ import '../constants/constants.dart';
 part 'test_data_provider.g.dart';
 
 @riverpod
-Future<List<TestDataModels>> getTestData(ref) async {
-  final response = await http.get(Uri.http(URL, '/'));
-  final json = jsonDecode(response.body) as List<dynamic>;
-  final list = json.map((row) {
-    return TestDataModels(name: row['name'], description: row['description']);
-  }).toList();
-  return list;
-}
-
-@riverpod
 class ListNotifier extends _$ListNotifier {
   @override
   FutureOr<List<TestDataModels>> build() async {
